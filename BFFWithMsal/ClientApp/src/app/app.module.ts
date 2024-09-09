@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +16,7 @@ import { CompleteLoginComponent } from './CompleteLogin/CompleteLogin.component'
 import { AuthService } from './services/auth.service';
 import { SpinnerComponent } from './spinner/spinner/spinner.component';
 import { AuthInterceptor } from './core/AuthInterceptor';
+import { MicrosoftGraphComponent } from './GraphModule/Components/microsoft-graph/microsoft-graph.component';
 
 /**
  * Here we pass the configuration parameters to create an MSAL instance.
@@ -63,7 +63,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     FetchDataComponent,
     LoginComponent,
     CompleteLoginComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MicrosoftGraphComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -84,12 +85,10 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ])
   ],
   providers: [
-
     {
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true,
-
     },
     {
       provide: HTTP_INTERCEPTORS,
