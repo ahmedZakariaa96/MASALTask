@@ -30,7 +30,7 @@ export class CompleteLoginComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    alert('fired');
+    // alert('fired');
     this.msalBroadcastService.msalSubject$
       .pipe(
         filter((msg: EventMessage) => msg.eventType === EventType.LOGIN_SUCCESS),
@@ -53,10 +53,10 @@ export class CompleteLoginComponent implements OnInit {
         this.setLoginDisplay();
         this.checkAndSetActiveAccount();
         this.getClaims(this.authService.instance.getActiveAccount()?.idTokenClaims)
-
         // this.router.navigateByUrl('/home');
         this.GetWeather()
-
+        this.getToken()
+         // this.handleRedirectResponse();
         // this.accountService.completeLogin().then((result) => {
         //   if (result == true) {
         //     debugger;
@@ -118,4 +118,26 @@ export class CompleteLoginComponent implements OnInit {
 
     })
   }
+
+ 
+
+  
+  getToken()
+  {
+    const tokenRequest = {
+      scopes: ['User.Read'] // تحديد الـ scopes المطلوبة
+    };
+  this.authService.instance.acquireTokenSilent(tokenRequest)
+    .then((tokenResponse) => {
+         // تم تسجيل الدخول بنجاح
+      sessionStorage.setItem("accessToken",tokenResponse.accessToken);
+      console.log('Access Token:', tokenResponse.accessToken); // الحصول على التوكن هنا
+    })
+    .catch((error) => {
+      // في حالة فشل الحصول على التوكن بطريقة صامتة، يمكن استدعاء popup أو redirect
+      console.error('Silent token acquisition failed. Attempting to get token via redirect/popup.', error);
+  
+      });
+  }
+
 }

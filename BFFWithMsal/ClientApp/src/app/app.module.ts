@@ -78,6 +78,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'login', component: LoginComponent },
       { path: 'complete', component: CompleteLoginComponent },
+      { path: 'MicrosoftGraph', component: MicrosoftGraphComponent },
 
 
 
