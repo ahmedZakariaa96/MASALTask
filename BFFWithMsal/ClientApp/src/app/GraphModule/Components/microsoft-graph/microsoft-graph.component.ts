@@ -3,6 +3,7 @@ import { LearningItem } from '../../Model/learning-item';
 import { MicrosoftGraphService } from '../../Services/microsoft-graph.service';
 import { User } from '../../Model/user';
 import { Course } from '../../Model/course';
+import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-microsoft-graph',
@@ -11,28 +12,37 @@ import { Course } from '../../Model/course';
 })
 export class MicrosoftGraphComponent {
 
-  
+  weatherData:any=[];
 
-  learningData: LearningItem[] = [];
-  constructor(private _microsoftGraphService:MicrosoftGraphService){}
+
+  learningData:any;
+  constructor(private _microsoftGraphService:MicrosoftGraphService,private weatherService :WeatherService){}
   
   ngOnInit(): void {
-  this.GetData();
+  this.GetWeather();
   this.GetUsers();
-  this.GetCourses();
-  }
+   }
 
-
-  GetData(){
-    this._microsoftGraphService.GetData().subscribe({
-      next: (response: LearningItem[]) => {
-        this.learningData = response; // تخزين البيانات لعرضها
-      },
-      error: (error) => {
-        console.error('Error fetching Viva Learning data: ', error); // التعامل مع الخطأ
-      }
-    });
-  }
+   GetWeather()
+   {
+     this._microsoftGraphService.GetWeather().subscribe(res=>{
+       this.weatherData=res;
+       console.log(res);
+     },err=>{
+       console.log(err);
+ 
+     })
+   }
+  // GetData(){
+  //   this.weatherService.GetData().subscribe({
+  //     next: (response ) => {
+  //       this.learningData = response; // تخزين البيانات لعرضها
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching Viva Learning data: ', error); // التعامل مع الخطأ
+  //     }
+  //   });
+  // }
 
   GetUsers(){
     this._microsoftGraphService.GetUsers().subscribe({
@@ -46,15 +56,15 @@ export class MicrosoftGraphComponent {
     });
   }
 
-  GetCourses(){
-    this._microsoftGraphService.GetCourses().subscribe({
-      next: (courses: Course[]) => {
-        console.log('Courses:', courses);
-        // هنا يمكنك التعامل مع بيانات الدورات
-      },
-      error: (error) => {
-        console.error('Error fetching course data: ', error);
-      }
-    });
-  }
+  // GetCourses(){
+  //   this._microsoftGraphService.GetCourses().subscribe({
+  //     next: (courses: Course[]) => {
+  //       console.log('Courses:', courses);
+  //       // هنا يمكنك التعامل مع بيانات الدورات
+  //     },
+  //     error: (error) => {
+  //       console.error('Error fetching course data: ', error);
+  //     }
+  //   });
+  // }
 }

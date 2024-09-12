@@ -1,4 +1,10 @@
+<h3>Welcome Viva Learning </h3>
 <div *ngFor="let learningItem of learningData">
     <h3>{{ learningItem.title }}</h3>
     <p>{{ learningItem.description }}</p>
+</div>
+
+
+<div *ngFor="let item of weatherData">
+    <p> {{item.date}} , {{item.temperatureC}} , {{item.temperatureF}} ,{{item.summary}}</p>
 </div>
