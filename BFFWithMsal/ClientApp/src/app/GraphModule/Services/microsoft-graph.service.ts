@@ -11,18 +11,15 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class MicrosoftGraphService {
-
-   
   private apiUrlUsers = 'https://graph.microsoft.com/v1.0/users'; 
   private apiUrlCourses = 'https://graph.microsoft.com/v1.0/users'; 
 
  
   constructor(private http: HttpClient,private authService: MsalService) { }
 
-   
+  
   GetWeather()
   {
-    
     return this.http.get(environment.apiURl+"WeatherForecast")
   }
   GetUsers(): Observable<User[]> {
