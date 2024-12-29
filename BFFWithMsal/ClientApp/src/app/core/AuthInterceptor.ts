@@ -39,23 +39,23 @@ export class AuthInterceptor implements HttpInterceptor {
 
     handleStatusCode(err:HttpErrorResponse,statusCode:number,message:string)
     {
-      if(statusCode==StatusCode.NotAuthorized)
-      {
-        // this.notificationService.ShowNotification(StatusResult.Falid, "You Are Not Authorized");
-        // this.helperService.ClearSession()
-        this.router.navigateByUrl('/login');
+      // if(statusCode==StatusCode.NotAuthorized)
+      // {
+      //   // this.notificationService.ShowNotification(StatusResult.Falid, "You Are Not Authorized");
+      //   // this.helperService.ClearSession()
+      //   this.router.navigateByUrl('/login');
 
-      }
-      else if (statusCode == StatusCode.SessionTimeout) {
-        // this.notificationService.ShowNotification(StatusResult.Falid, "Session Timeout");
-        // this.helperService.ClearSession()
-        this.router.navigateByUrl('/login');
-      }
-      else
-      {
-        // this.notificationService.ShowNotification(StatusResult.Falid, message);
+      // }
+      // else if (statusCode == StatusCode.SessionTimeout) {
+      //   // this.notificationService.ShowNotification(StatusResult.Falid, "Session Timeout");
+      //   // this.helperService.ClearSession()
+      //   this.router.navigateByUrl('/login');
+      // }
+      // else
+      // {
+      //   // this.notificationService.ShowNotification(StatusResult.Falid, message);
 
-      }
+      // }
     }
 
 

@@ -36,6 +36,8 @@ export class AuthService {
     }
   }
 
+   
+
   // Sign out
   async signOut(): Promise<void> {
     await this.msalService.logout();

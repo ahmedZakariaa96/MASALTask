@@ -8,8 +8,8 @@ export const environment = {
   production: false,
   apiURl:"https://localhost:7189/api/",
 
-  clientId:'3fb2198b-7e8b-4024-b21c-2d0ac321459f',
-  scopeEndpoint:"api://1bd82c71-0f01-4c4e-8bd5-3b37fbccb6e0/.default"
+  clientId:'d658f792-b7e9-4d0d-b1d9-f9e53b228ccb',
+  scopeEndpoint:"api://d658f792-b7e9-4d0d-b1d9-f9e53b228ccb/VivaLearning"
 };
 
 
